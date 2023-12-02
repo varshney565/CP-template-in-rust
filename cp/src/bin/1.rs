@@ -31,10 +31,3 @@ fn main() {
 
 // ==============================================> 
 // Testing
-// fn main() {
-//     if cfg!(feature = "debug") {
-//         println!("DEBUG MODE ON !!");
-//     }else {
-//         println!("online_judge mode !!");
-//     }
-// }
