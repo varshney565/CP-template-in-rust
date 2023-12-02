@@ -1,14 +1,26 @@
+use cp::debug;
 use cp::debugger::*;
 use cp::console::*;
+use cp::scanner::Scanner;
 use std::io::Write;
 use cp::scanner;
 
-fn main() {
-    let mut new_scanner;
-    let mut output;
-    let mut error;
+fn solve<R : std::io::BufRead, W : std::io::Write>(scanner : &mut Scanner<R>,output : &mut W,error : &mut W) {
+    let n : i32 = scanner.next();
+    let mut v:Vec<i32> = (0..n).map(|_| scanner.next()).collect();
+    for element in &mut v {
+        write!(output, "{} ",element).ok();
+    }
+    debug!(error,v);
+    write!(output,"\n").ok();
+}
 
-    if cfg!(feature = "debug") {
+fn main() {
+    let mut new_scanner: Scanner<std::io::BufReader<Box<dyn std::io::Read>>>;
+    let mut output: std::io::BufWriter<Box<dyn Write>>;
+    let mut error: std::io::BufWriter<Box<dyn Write>>;
+
+    if cfg!(feature = "online") {
         new_scanner = scanner::scanner_from_file("input.txt");
         output = console_to_file("output.txt");
         error = debugger_to_file("error.txt");
@@ -17,17 +29,10 @@ fn main() {
         output = console_to_stdout();
         error = debugger_to_stderr();
     }
-
-    let n : i32 = new_scanner.next();
-    let mut v:Vec<i32> = (0..n).map(|_| new_scanner.next()).collect();
-    for element in &mut v {
-        write!(output, "{} ",element).ok();
-        write!(error,"{}D",element).ok();
+    let mut t : i64 = new_scanner.next();
+    debug!(&mut error,t);
+    while t != 0 {
+        solve(&mut new_scanner, &mut output, &mut error);
+        t = t-1;
     }
-    write!(output,"\n").ok();
 }
-
-
-
-// ==============================================> 
-// Testing
