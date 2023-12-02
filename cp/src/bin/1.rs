@@ -6,13 +6,7 @@ use std::io::Write;
 use cp::scanner;
 
 fn solve<R : std::io::BufRead, W : std::io::Write>(scanner : &mut Scanner<R>,output : &mut W,error : &mut W) {
-    let n : i32 = scanner.next();
-    let mut v:Vec<i32> = (0..n).map(|_| scanner.next()).collect();
-    for element in &mut v {
-        write!(output, "{} ",element).ok();
-    }
-    debug!(error,v);
-    write!(output,"\n").ok();
+
 }
 
 fn main() {
@@ -30,6 +24,7 @@ fn main() {
         error = debugger_to_stderr();
     }
     let mut t : i64 = new_scanner.next();
+    // let mut t = 1;
     debug!(&mut error,t);
     while t != 0 {
         solve(&mut new_scanner, &mut output, &mut error);
