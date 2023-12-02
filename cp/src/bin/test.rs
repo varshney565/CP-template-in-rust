@@ -4,9 +4,10 @@ use cp::console::*;
 use cp::scanner::Scanner;
 use std::io::Write;
 use cp::scanner;
+use std::time::Instant;
 
 fn solve<R : std::io::BufRead, W : std::io::Write>(scanner : &mut Scanner<R>,output : &mut W,error : &mut W) {
-
+    
 }
 
 fn main() {
@@ -23,11 +24,14 @@ fn main() {
         output = console_to_stdout();
         error = debugger_to_stderr();
     }
+    let start_time = Instant::now();
     let mut t : i64 = new_scanner.next();
     // let mut t = 1;
-    debug!(&mut error,t);
     while t != 0 {
         solve(&mut new_scanner, &mut output, &mut error);
         t = t-1;
     }
+    let end_time = Instant::now();
+    let elapsed_time = end_time - start_time;
+    writeln!(error,"Time Taken : {}ms",elapsed_time.as_millis()).ok();
 }
