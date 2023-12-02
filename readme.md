@@ -43,5 +43,3 @@ The template provides flexibility for online and local testing.
 
 - For local testing, modify the file paths in the configuration section and run the program with `cargo run --bin <YOUR_BINARY_NAME>`.
 - For online testing, set the feature flag and run the program with `cargo run --features=online --bin <YOUR_BINARY_NAME>`.
-
-Feel free to customize this template based on your preferences and the requirements of the competitive programming platform you are using. Happy coding!
