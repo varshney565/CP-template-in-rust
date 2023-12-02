@@ -108,13 +108,7 @@ use std::io::Write;
 use cp::scanner;
 
 fn solve<R : std::io::BufRead, W : std::io::Write>(scanner : &mut Scanner<R>,output : &mut W,error : &mut W) {
-    let n : i32 = scanner.next();
-    debug!(error,n);
-    if n%2 == 0 && n != 2 {
-        writeln!(output,"YES").ok();
-    }else {
-        writeln!(output,"NO").ok();
-    }
+    
 }
 
 fn main() {
