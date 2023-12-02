@@ -1,1 +1,0 @@
-pub const ONLINE_JUDGE : bool = false;
