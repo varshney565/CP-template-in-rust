@@ -25,13 +25,15 @@ fn main() {
         error = debugger_to_stderr();
     }
     let start_time = Instant::now();
-    let mut t : i64 = new_scanner.next();
-    // let mut t = 1;
+    // let mut t : i64 = new_scanner.next();
+    let mut t = 1;
     while t != 0 {
         solve(&mut new_scanner, &mut output, &mut error);
         t = t-1;
     }
     let end_time = Instant::now();
     let elapsed_time = end_time - start_time;
-    writeln!(error,"Time Taken : {}ms",elapsed_time.as_millis()).ok();
+    // writeln!(error,).ok();
+    let time_taken = format!("{}ms",elapsed_time.as_millis());
+    debug!(&mut error,time_taken);
 }

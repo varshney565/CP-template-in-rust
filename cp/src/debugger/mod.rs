@@ -24,7 +24,7 @@ pub fn _print<T: std::fmt::Debug,E : std::io::Write>(error : &mut E,value: T) {
 #[macro_export]
 macro_rules! debug {
     ($x:expr , $y:expr) => {
-        #[cfg(not(debug_stderr))]
+        if cfg!(feature = "online")
         {
             write!($x,"{} = ", stringify!($y)).ok();
             _print($x,$y);
