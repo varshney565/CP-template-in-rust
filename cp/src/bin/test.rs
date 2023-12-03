@@ -33,7 +33,6 @@ fn main() {
     }
     let end_time = Instant::now();
     let elapsed_time = end_time - start_time;
-    // writeln!(error,).ok();
     let time_taken = format!("{}ms",elapsed_time.as_millis());
     debug!(&mut error,time_taken);
 }

@@ -108,11 +108,7 @@ use std::io::Write;
 use cp::scanner;
 
 fn solve<R : std::io::BufRead, W : std::io::Write>(scanner : &mut Scanner<R>,output : &mut W,error : &mut W) {
-    let mut t = 1;
-    while t < 100 {
-        debug!(error,t);
-        t += 1;
-    }
+    
 }
 
 fn main() {
@@ -138,7 +134,6 @@ fn main() {
     }
     let end_time = Instant::now();
     let elapsed_time = end_time - start_time;
-    // writeln!(error,).ok();
     let time_taken = format!("{}ms",elapsed_time.as_millis());
     debug!(&mut error,time_taken);
 }
